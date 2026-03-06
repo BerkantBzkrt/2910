@@ -5,96 +5,134 @@
 <title>Senin İçin ❤️</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    text-align:center;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-    color:white;
+height:100vh;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
+overflow:hidden;
 }
 
 .container{
-    margin-top:100px;
+max-width:700px;
+padding:40px;
 }
 
 h1{
-    font-size:50px;
+font-size:50px;
+margin-bottom:20px;
 }
 
 p{
-    font-size:22px;
+font-size:20px;
+margin-bottom:20px;
+line-height:1.6;
 }
 
 button{
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#ff4b6e;
-    cursor:pointer;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-    transform:scale(1.1);
+transform:scale(1.1);
+}
+
+.hidden{
+display:none;
+margin-top:25px;
+font-size:22px;
 }
 
 .heart{
-    position:fixed;
-    top:-10px;
-    color:red;
-    animation:fall linear forwards;
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
-    to{
-        transform:translateY(100vh);
-    }
+to{
+transform:translateY(100vh);
 }
-</style>
+}
 
+img{
+width:250px;
+border-radius:20px;
+margin-top:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="container">
+
 <h1>❤️ Seni Seviyorum ❤️</h1>
 
 <p>
 Hayatıma girdiğin günden beri her şey daha güzel.  
-Bu küçük site sadece sana özel.  
+Bu küçük site sadece sana özel hazırlandı.
 </p>
 
-<p>
-İyi ki varsın sevgilim 💕
+<button onclick="showMessage()">Mesajımı Aç 💌</button>
+
+<p id="message" class="hidden">
+Sen benim en güzel tesadüfümsün.  
+İyi ki varsın sevgilim. ❤️
 </p>
 
-<button onclick="mesaj()">Bana Tıkla</button>
-
-<p id="yazi"></p>
+<img src="https://i.imgur.com/8Km9tLL.jpg">
 
 </div>
 
 <script>
 
-function mesaj(){
-document.getElementById("yazi").innerHTML="Sen benim en güzel hikayemsin ❤️";
+function showMessage(){
+document.getElementById("message").style.display="block";
 }
 
-function kalp(){
+function createHeart(){
+
 const heart=document.createElement("div");
+
 heart.classList.add("heart");
+
 heart.innerHTML="❤️";
+
 heart.style.left=Math.random()*100+"vw";
+
 heart.style.animationDuration=(Math.random()*3+2)+"s";
+
 document.body.appendChild(heart);
 
 setTimeout(()=>{
 heart.remove();
 },5000);
+
 }
 
-setInterval(kalp,300);
+setInterval(createHeart,300);
 
 </script>
 
