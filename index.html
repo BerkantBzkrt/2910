@@ -2,63 +2,105 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Senin İçin ❤️</title>
+<title>Bizim Hikayemiz ❤️</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
 
 body{
-height:100vh;
 background:linear-gradient(135deg,#ff758c,#ff7eb3);
-display:flex;
-align-items:center;
-justify-content:center;
 color:white;
 text-align:center;
-overflow:hidden;
+overflow-x:hidden;
 }
 
-.container{
-max-width:700px;
-padding:40px;
-}
+section{padding:80px 20px}
 
-h1{
-font-size:50px;
-margin-bottom:20px;
-}
-
-p{
-font-size:20px;
-margin-bottom:20px;
-line-height:1.6;
-}
+h1{font-size:48px;margin-bottom:20px}
+h2{margin-bottom:20px}
 
 button{
-padding:15px 35px;
-font-size:18px;
+padding:12px 30px;
 border:none;
 border-radius:30px;
 background:white;
-color:#ff4d6d;
+color:#ff4b6e;
+font-size:16px;
 cursor:pointer;
-transition:0.3s;
 }
 
-button:hover{
-transform:scale(1.1);
+#login{
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
 
-.hidden{
-display:none;
-margin-top:25px;
-font-size:22px;
+input{
+padding:12px;
+border-radius:10px;
+border:none;
+margin-top:10px;
+}
+
+.hidden{display:none}
+
+#counter{
+font-size:28px;
+margin-top:10px;
+}
+
+.gallery{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.card{
+width:220px;
+height:300px;
+perspective:1000px;
+}
+
+.inner{
+width:100%;
+height:100%;
+position:relative;
+transform-style:preserve-3d;
+transition:1s;
+}
+
+.card:hover .inner{
+transform:rotateY(180deg);
+}
+
+.front,.back{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:20px;
+overflow:hidden;
+}
+
+.front img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.back{
+background:white;
+color:#ff4b6e;
+display:flex;
+align-items:center;
+justify-content:center;
+transform:rotateY(180deg);
+padding:20px;
 }
 
 .heart{
@@ -69,16 +111,7 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-to{
-transform:translateY(100vh);
-}
-}
-
-img{
-width:250px;
-border-radius:20px;
-margin-top:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
+to{transform:translateY(100vh)}
 }
 
 </style>
@@ -86,53 +119,173 @@ box-shadow:0 10px 30px rgba(0,0,0,0.3);
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="login">
 
-<h1>❤️ Seni Seviyorum ❤️</h1>
+<h1>Bu site sana özel ❤️</h1>
+<p>Girmek için şifreyi yaz</p>
 
-<p>
-Hayatıma girdiğin günden beri her şey daha güzel.  
-Bu küçük site sadece sana özel hazırlandı.
-</p>
+<input id="password" placeholder="Şifre">
+<br><br>
 
-<button onclick="showMessage()">Mesajımı Aç 💌</button>
-
-<p id="message" class="hidden">
-Sen benim en güzel tesadüfümsün.  
-İyi ki varsın sevgilim. ❤️
-</p>
-
-<img src="https://i.imgur.com/8Km9tLL.jpg">
+<button onclick="check()">Giriş</button>
 
 </div>
 
+<!-- MAIN SITE -->
+
+<div id="site" class="hidden">
+
+<section>
+
+<h1>❤️ Bizim Hikayemiz ❤️</h1>
+<p>Hayatıma girdiğin gün her şey değişti.</p>
+
+</section>
+
+<section>
+
+<h2>Birlikte Geçirdiğimiz Süre</h2>
+
+<div id="counter"></div>
+
+</section>
+
+<section>
+
+<h2>Fotoğraflarımız</h2>
+
+<div class="gallery">
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://picsum.photos/300/400?1">
+</div>
+
+<div class="back">
+İlk gülüşün ❤️
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://picsum.photos/300/400?2">
+</div>
+
+<div class="back">
+En güzel anımız
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://picsum.photos/300/400?3">
+</div>
+
+<div class="back">
+Seni seviyorum
+</div>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>💌 Sana Bir Mektup</h2>
+
+<p style="max-width:600px;margin:auto;line-height:1.8">
+
+Hayatıma girdiğin günden beri her şey daha güzel.  
+Seninle geçen her gün benim için yeni bir mutluluk.  
+Bu küçük site sana olan sevgimin küçük bir hatırası.  
+
+İyi ki varsın. ❤️
+
+</p>
+
+</section>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
 <script>
 
-function showMessage(){
-document.getElementById("message").style.display="block";
-}
+function check(){
 
-function createHeart(){
+const pass="askim";
 
-const heart=document.createElement("div");
+if(document.getElementById("password").value===pass){
 
-heart.classList.add("heart");
+document.getElementById("login").style.display="none"
+document.getElementById("site").style.display="block"
 
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=(Math.random()*3+2)+"s";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},5000);
+document.getElementById("music").play()
 
 }
 
-setInterval(createHeart,300);
+else{
+
+alert("Şifre yanlış ❤️")
+
+}
+
+}
+
+const startDate=new Date("2024-01-01")
+
+function updateCounter(){
+
+const now=new Date()
+
+const diff=now-startDate
+
+const days=Math.floor(diff/(1000*60*60*24))
+
+document.getElementById("counter").innerHTML=
+days+" gündür birlikteyiz ❤️"
+
+}
+
+setInterval(updateCounter,1000)
+
+function heart(){
+
+const h=document.createElement("div")
+
+h.classList.add("heart")
+
+h.innerHTML="❤️"
+
+h.style.left=Math.random()*100+"vw"
+
+h.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(h)
+
+setTimeout(()=>{h.remove()},5000)
+
+}
+
+setInterval(heart,300)
 
 </script>
 
